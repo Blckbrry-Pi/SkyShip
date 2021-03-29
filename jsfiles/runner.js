@@ -1,4 +1,4 @@
-
+const zipperStrength = 0.05;
 
 class Runner {
   constructor(xPos, yPos, xVel = 0, yVel = 0) {
@@ -29,15 +29,40 @@ class Runner {
     pop();
   }
   
-  doPhysicsStep(attractors, timeMult = 1) {
+  doPhysicsStep(attractors, zippers, timeMult = 1) {
     if (this.connectedAttractor.index != -1) {
       this.doSpringPhysics(attractors, timeMult);
     }
-    
+    let zipperVector = this.getZipperVector(zippers, timeMult);
+    zipperVector.setMag(this.vel.mag());
+
+    this.vel = p5.Vector.lerp(this.vel, zipperVector, zipperStrength);
+
+    this.vel.setMag(zipperVector.mag());
+
     this.pos.x += this.vel.x * timeMult;
     this.pos.y += this.vel.y * timeMult;
   }
   
+  getZipperVector(zippers, timeMult) {
+    let totalZipperVec = new p5.Vector();
+
+    for (let i = 0; i < zippers.length; i++) {
+      let currZipperDirLine = zippers[i].getPerpThroughPoint(this.pos);
+      if (zippers[i].line.pointIsOnLine(currZipperDirLine.endPoint) && currZipperDirLine.length() < zippers[i].width) {
+        zippers[i].advanceLine(currZipperDirLine);
+
+        let currZipperVec = currZipperDirLine.getVector();
+        currZipperVec.setMag(1 / currZipperVec.mag());
+        totalZipperVec.add(currZipperVec);
+      }
+    }
+    if (totalZipperVec.x === 0 && totalZipperVec.y === 0) {
+      return this.vel;
+    }
+    return totalZipperVec;
+  }
+
   doSpringPhysics(attractors, timeMult) {
     this.connectedAttractor.pos.x = attractors[this.connectedAttractor.index].x
     this.connectedAttractor.pos.y = attractors[this.connectedAttractor.index].y
@@ -93,7 +118,7 @@ class Runner {
   
   updateSpringLength(timeMult) {
     if (this.connectedAttractor.index != -1) {
-      this.connectedAttractor.springLen -= 1 * timeMult;
+//      this.connectedAttractor.springLen -= 1 * timeMult;
     }
   }
   

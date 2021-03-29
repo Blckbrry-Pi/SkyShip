@@ -1,14 +1,18 @@
 let attractorTimer = 0;
+const attractorTimerTarget = 100;
+
+const slowdownRadius = 150;
+const slowdownConst_r = 1 / 6;
+
+const slowdownConst_c = 1 / 3;
+
 
 function getTimeMult(x, y, attractors) {
-  
-  if (attractorTimer === 0) {
-    return nearAttractorMult(x, y, attractors);
-  } else if (attractorTimer < 50) {
-    return 8 / (33 - attractorTimer / (50 / 9));
-  } else {
-    return 1 / 3;
-  }
+  return lerp(
+    nearAttractorMult(x, y, attractors),
+    slowdownConst_c / (1 + slowdownConst_c),
+    attractorTimer / attractorTimerTarget
+  );
 }
 
 function nearAttractorMult(x, y, attractors) {
@@ -16,19 +20,21 @@ function nearAttractorMult(x, y, attractors) {
   for (let i = 0; i < attractors.length; i++) {
     let n = map(
       dist(attractors[i].x, attractors[i].y, x, y),
-      attractors[i].fieldSize - 25,
-      attractors[i].fieldSize + 50,
-      attractors[i].fieldSize - 5,
-      attractors[i].fieldSize + 50,
+      attractors[i].fieldSize - 0,
+      attractors[i].fieldSize + slowdownRadius,
+      0,
+      1,
       true
     )
-    minTimeMult = min(minTimeMult, (n - attractors[i].fieldSize + 16) / 66);
+    minTimeMult = min(minTimeMult, (n + slowdownConst_r) / (1 + slowdownConst_r));
   }
   return minTimeMult;
 }
 
 function onConnect(timeMult) {
   attractorTimer += timeMult * 10;
+  if (attractorTimer > attractorTimerTarget)
+    attractorTimer = attractorTimerTarget;
 }
 
 function onDisconnect() {

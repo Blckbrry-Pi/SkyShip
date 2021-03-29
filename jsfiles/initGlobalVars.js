@@ -15,4 +15,5 @@ var state = states.start;
 
 
 var attractors;
+var zippers;
 var runner;

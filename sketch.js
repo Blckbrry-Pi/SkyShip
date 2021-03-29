@@ -1,3 +1,5 @@
+let qwerty;
+
 function setup() {
   frameRate(30);
   createCanvas(windowWidth, windowHeight);
@@ -9,9 +11,13 @@ function setup() {
     new Attractor(1800, 400, 150, 30, true),
   ]
   
+  zippers = [
+    new Zipper(0, 0, 600, 400, 150, 100),
+  ]
+
   initStars(width * height / 320);
   
-  runner = new Runner(-150, 0, 12, -8);
+  runner = new Runner(-200, 50, 18, -12);
 }
 
 
@@ -57,7 +63,7 @@ function runnerStep() {
   
   runner.updateSpringLength(timeMult);
   
-  runner.doPhysicsStep(attractors, timeMult);
+  runner.doPhysicsStep(attractors, zippers, timeMult);
 }
 
 function starStep() {
@@ -83,6 +89,11 @@ function updateCamera() {
 
 function drawScene() {
   starryBackground();
+  zippers.forEach(
+    element => {
+      element.draw();
+    }
+  );
   attractors.forEach(
     element => {
       element.draw();
