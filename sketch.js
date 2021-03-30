@@ -12,7 +12,9 @@ function setup() {
   ]
   
   zippers = [
-    new Zipper(0, 0, 600, 400, 150, 100),
+    new Zipper(   0,   0,  600, 400, 150, 100),
+    new Zipper( 600, 400, 1200,   0, 150, 100),
+    new Zipper(1200,   0,    0,   0, 150, 100),
   ]
 
   initStars(width * height / 320);
