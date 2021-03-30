@@ -31,5 +31,5 @@ function starryBackground() {
 }
 
 function rotateStars(timeMult = 1) {
-  starOffs += 0.01 * timeMult;
+  starOffs += 0.02 * timeMult;
 }

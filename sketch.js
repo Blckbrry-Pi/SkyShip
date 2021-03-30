@@ -19,7 +19,7 @@ function setup() {
 
   initStars(width * height / 320);
   
-  runner = new Runner(-200, 50, 18, -12);
+  runner = new Runner(-200, 50, 36, -24);
 }
 
 
@@ -37,7 +37,7 @@ function draw() {
 
 
 function timeStep() {
-  timeMult = 2 * getTimeMult(runner.pos.x, runner.pos.y, attractors);
+  timeMult = getTimeMult(runner.pos.x, runner.pos.y, attractors);
   
   
   if (runner.connectedAttractor.index !== -1) {
