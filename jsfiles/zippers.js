@@ -187,6 +187,20 @@ class Zipper {
             translate(screenPos.startPoint);
             push();
                 rotate(screenPos.getVector().heading());
+
+                fill(12, 39, 5, 30);
+                stroke(38, 89, 21, 0);
+                strokeWeight(2);
+
+                rectMode(CENTER);
+                for (let i = 1; i > 0; i -= 0.1) {
+                    let position = new p5.Vector(zipperLength * viewScale / 2, 0);
+                    let widthHeight = new p5.Vector(zipperLength * viewScale + this.width * i * 2, this.width * 2 * viewScale * i)
+
+                    rect(position.x, position.y, widthHeight.x, widthHeight.y, 50);
+                }
+//                rect(0, -this.width * viewScale, zipperLength * viewScale, this.width * 2 * viewScale, 50);
+
                 fill(12, 39, 5);
                 stroke(38, 89, 21);
                 strokeWeight(2);
