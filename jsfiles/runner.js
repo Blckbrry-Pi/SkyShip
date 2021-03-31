@@ -1,10 +1,10 @@
 const zipperStrength = 0.05;
 
 class Runner {
-  constructor(xPos, yPos, xVel = 0, yVel = 0) {
+  constructor(xPos, yPos, xVel = 0, yVel = 0, targetVel) {
     this.pos = createVector(xPos, yPos);
     this.vel = createVector(xVel, yVel);
-    this.targetVelMag = createVector(xVel, yVel).mag();
+    this.targetVelMag = targetVel;
     this.connectedAttractor = {
       index: -1,
       springLen: -1,
