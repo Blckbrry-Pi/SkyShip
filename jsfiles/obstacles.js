@@ -32,16 +32,22 @@ class Obstacle {
     strokeWeight(2);
     stroke(80, 12, 24);
     fill(0, 0);
+    this.drawOutline();
 
+    noStroke();
+    this.setClipShape();
+
+    this.drawClipRect();
+  }
+  drawOutline() {
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       let onScreenPoint = vectorToScreenVector(this.points[i]);
       vertex(onScreenPoint.x, onScreenPoint.y);
     }
-
     endShape(CLOSE);
-
-    noStroke();
+  }
+  setClipShape() {
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       addPoint(this.points[i]);
@@ -62,15 +68,12 @@ class Obstacle {
     }
 
     endShape(CLOSE);
-
+  }
+  drawClipRect() {
     drawingContext.save();
-
     drawingContext.clip();
-
-    noStroke();
     fill(80, 12, 24, 75);
     rect(-100000, -100000, 200000, 200000);
-
     drawingContext.restore();
   }
 }
