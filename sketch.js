@@ -62,8 +62,8 @@ function setup() {
       new p5.Vector( 1100,  1025),
       new p5.Vector( 1000,   925),
       new p5.Vector(  950,   800),
-      new p5.Vector(  200,   150),
-      new p5.Vector(   50,   200),
+      new p5.Vector(  400,   350),
+      new p5.Vector(   50,   250),
       new p5.Vector(   50,   900),
       new p5.Vector(  -75,  1000),
       new p5.Vector( -200,   900),
@@ -73,7 +73,7 @@ function setup() {
 
   initStars(width * height / 320);
   
-  runner = new Runner(-50, 901, 0, -50, 30);
+  runner = new Runner(-50, 901, 0, -1, 30);
 
   state = newState(states.start);
 }
