@@ -1,6 +1,7 @@
 class Obstacle {
-  constructor(points) {
+  constructor(points, obstType = false) {
     this.points = points;
+    this.isOuter = obstType;
   }
 
   pointInObstacle(pointToCheckBounds) {
@@ -20,20 +21,63 @@ class Obstacle {
           
       }
     }
-    return intersections % 2 ? true : false
+    if (this.isOuter)
+      return intersections % 2 - 1 ? true : false
+    else
+      return intersections % 2 ? true : false
   }
     
   draw() {
+
     strokeWeight(2);
     stroke(80, 12, 24);
-    fill(80, 12, 24, 75);
+    fill(0, 0);
+
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       let onScreenPoint = vectorToScreenVector(this.points[i]);
       vertex(onScreenPoint.x, onScreenPoint.y);
     }
+
     endShape(CLOSE);
+
+    noStroke();
+    beginShape();
+    for (let i = 0; i < this.points.length; i++) {
+      addPoint(this.points[i]);
+    }
+
+    if (this.isOuter) {
+      let onScreenPoint;
+      addPoint(this.points[0]);
+
+      addPoint(new p5.Vector(-10000, this.points[0].y));
+
+      addPoint(new p5.Vector(-10000,  10000));
+      addPoint(new p5.Vector( 10000,  10000));
+      addPoint(new p5.Vector( 10000, -10000));
+      addPoint(new p5.Vector(-10000, -10000));
+
+      addPoint(new p5.Vector(-10000, this.points[0].y));
+    }
+
+    endShape(CLOSE);
+
+    drawingContext.save();
+
+    drawingContext.clip();
+
+    noStroke();
+    fill(80, 12, 24, 75);
+    rect(-100000, -100000, 200000, 200000);
+
+    drawingContext.restore();
   }
+}
+
+function addPoint(pointVector) {
+  let onScreenPoint = vectorToScreenVector(pointVector);
+  vertex(onScreenPoint.x, onScreenPoint.y);
 }
 
 function vectorToScreenVector(pointToMapToScreen) {
