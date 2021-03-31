@@ -116,11 +116,20 @@ function attractorStep() {
 
 
 function updateCamera() {
-  viewScale = 2;
+  viewScale = 1.5;
   viewTranslation = new p5.Vector(runner.pos.x - width / 2 / viewScale, runner.pos.y - height / 2 / viewScale);
   
   globalMouse.scale = viewScale;
   globalMouse.translation = viewTranslation;
+}
+
+function drawBase() {
+  starryBackground();
+  obstacles.forEach(
+    element => {
+      element.draw();
+    }
+  );
 }
 
 function drawAttractors() {
@@ -133,7 +142,7 @@ function drawAttractors() {
     attractors[i].drawBounds();
   }
   drawingContext.clip();
-  starryBackground();
+  drawBase();
   drawingContext.restore();
 
   attractors.forEach(
@@ -143,8 +152,11 @@ function drawAttractors() {
   );
 }
 
+
+
 function drawScene() {
-  starryBackground();
+  drawBase();
+
   zippers.forEach(
     element => {
       element.draw();
