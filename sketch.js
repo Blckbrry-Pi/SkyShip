@@ -46,12 +46,13 @@ function setup() {
   
   runner = new Runner(-200, 50, 24, -18);
 
-  state = newState(states.flying);
+  state = newState(states.start);
 }
 
 
 function draw() {
   doStateLoop(state);
+  state.stateTimer++;
 }
 
 function keyPressed() {
