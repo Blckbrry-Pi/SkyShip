@@ -36,7 +36,6 @@ class Runner {
     }
     let zipperVector = this.getZipperVector(zippers, timeMult);
     zipperVector.mult(7000);
-    console.log(zipperVector);
 
     let oldMag = this.vel.mag();
 
