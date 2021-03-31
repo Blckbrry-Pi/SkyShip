@@ -45,7 +45,7 @@ class Runner {
       lerp(
         oldMag,
         this.targetVelMag,
-        0.1 * timeMult
+        0.04 * timeMult
       )
     )
 
