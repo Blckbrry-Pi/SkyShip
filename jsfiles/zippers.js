@@ -120,10 +120,11 @@ class DirectionalLine {
 }
 
 class Zipper {
-    constructor(xS, yS, xE, yE, widthOfEffect, attractDistAhead) {
+    constructor(xS, yS, xE, yE, widthOfEffect, attractDistAhead, zipperStrength) {
         this.line = new DirectionalLine(xS, yS, xE, yE);
         this.width = widthOfEffect;
         this.leadingDist = attractDistAhead;
+        this.strength = zipperStrength;
     }
 
     length() {
