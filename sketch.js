@@ -22,6 +22,24 @@ function setup() {
     new Zipper(1000, -400,  300, -200,  100, 100, 4),
   ]
 
+  obstacles = [
+    new Obstacle([
+      new p5.Vector( 300,  -75),
+      new p5.Vector(1150,  600),
+      new p5.Vector(1200,  800),
+      new p5.Vector(1250,  700),
+      new p5.Vector(2100,    0),
+      new p5.Vector(2200, -150),
+      new p5.Vector(2350, -250),
+      new p5.Vector(2500, -250),
+      new p5.Vector(3625,  725),
+      new p5.Vector(3625,  350),
+      new p5.Vector(3350, -50),
+      new p5.Vector(2975, -300),
+      new p5.Vector(1000, -300),
+    ])
+  ]
+
   initStars(width * height / 320);
   
   runner = new Runner(-200, 50, 24, -18);
