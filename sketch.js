@@ -44,7 +44,7 @@ function setup() {
   
   runner = new Runner(-200, 50, 24, -18);
 
-  state = states.flying
+  state = newState(states.flying);
 }
 
 
@@ -72,12 +72,12 @@ function timeStep() {
   }
   attractors.forEach(
     element => {
-      if (element.collided(runner.pos.x, runner.pos.y)) state = states.dead;
+      if (element.collided(runner.pos.x, runner.pos.y)) state = newState(states.dead);
     }
   );
   obstacles.forEach(
     element => {
-      if (element.pointInObstacle(runner.pos)) state = states.dead;
+      if (element.pointInObstacle(runner.pos)) state = newState(states.dead);
     }
   );
 }
