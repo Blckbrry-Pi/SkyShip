@@ -6,20 +6,28 @@ function setup() {
   
   attractors = [
     new Attractor(   0,   0, 150, 30, true),
-    new Attractor( 600, 400, 150, 30, false),
-    new Attractor(1200,   0, 150, 30, false),
-    new Attractor(1800, 400, 150, 30, true),
+    new Attractor(1200, 800, 150, 30, false),
+    new Attractor(2400,   0, 150, 30, false),
+    new Attractor(3600, 800, 150, 30, true),
   ]
   
   zippers = [
-    new Zipper(   0,   0,  600, 400, 150, 100),
-    new Zipper( 600, 400, 1200,   0, 150, 100),
-    new Zipper(1200,   0,    0,   0, 150, 100),
+    new Zipper( 140,  -50, 1050,  725, 100, 100, 1),
+    new Zipper(1340,  850, 2250,   75, 100, 100, 1),
+    new Zipper(2540,  -50, 3450,  725, 100, 100, 1),
+    new Zipper(3725,  750, 3725,  300, 100, 100, 1),
+    new Zipper(3725,  300, 3500,    0, 100, 100, 4),
+    new Zipper(3500, -100, 3200, -300, 100, 100, 4),
+    new Zipper(3200, -400, 1000, -400,  100, 100, 4),
+    new Zipper(1000, -400,  300, -200,  100, 100, 4),
+    
+//    new Zipper(3725,    0, 2400, -800, 300, 200),
+//    new Zipper(2400, -800,  300, -200, 150, 100),
   ]
 
   initStars(width * height / 320);
   
-  runner = new Runner(-200, 50, 36, -24);
+  runner = new Runner(-200, 50, 24, -18);
 }
 
 
