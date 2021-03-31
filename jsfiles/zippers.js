@@ -115,7 +115,15 @@ class DirectionalLine {
     }
 
     draw() {
-        line(this.startPoint.x, this.startPoint.y, this.endPoint.x, this.endPoint.y);
+        let startPointScreenPos = new p5.Vector(
+            (this.startPoint.x - viewTranslation.x) * viewScale,
+            (this.startPoint.y - viewTranslation.y) * viewScale,
+        );
+        let endPointScreenPos = new p5.Vector(
+            (this.endPoint.x - viewTranslation.x) * viewScale,
+            (this.endPoint.y - viewTranslation.y) * viewScale,
+        );
+        line(startPointScreenPos.x, startPointScreenPos.y, endPointScreenPos.x, endPointScreenPos.y);
     }
 }
 
