@@ -16,12 +16,22 @@ class Attractor {
     return dist(shipx, shipy, this.x, this.y) <= this.physSize
   }
   
+  drawBounds() {
+    let screenPos = new p5.Vector(
+      (this.x - viewTranslation.x) * viewScale,
+      (this.y - viewTranslation.y) * viewScale
+    );
+
+    drawingContext.ellipse(screenPos.x, screenPos.y, viewScale * this.fieldSize, viewScale * this.fieldSize, 0, 0, TWO_PI);
+  }
+
   draw() {
     let screenPos = new p5.Vector(
       (this.x - viewTranslation.x) * viewScale,
       (this.y - viewTranslation.y) * viewScale
     );
 
+    
     fill(0, 255, 0, 40); noStroke();
     ellipse(screenPos.x, screenPos.y, viewScale * this.fieldSize * 2, viewScale * this.fieldSize * 2);
     
