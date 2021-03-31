@@ -43,18 +43,22 @@ function setup() {
   initStars(width * height / 320);
   
   runner = new Runner(-200, 50, 24, -18);
+
+  state = states.flying
 }
 
 
 function draw() {
   timeStep();
-
-  runnerStep();
   starStep();
   attractorStep();
-  
+  switch (state) {
+    case states.flying:
+      runnerStep();
+  }
   updateCamera();
   drawScene();
+  
 }
 
 
@@ -64,11 +68,18 @@ function timeStep() {
   
   
   if (runner.connectedAttractor.index !== -1) {
-    if (attractors[runner.connectedAttractor.index].collided(runner.pos.x, runner.pos.y)) {
-      console.log("dead");
-    }
-    onConnect(timeMult);
+    //onConnect(timeMult);
   }
+  attractors.forEach(
+    element => {
+      if (element.collided(runner.pos.x, runner.pos.y)) state = states.dead;
+    }
+  );
+  obstacles.forEach(
+    element => {
+      if (element.pointInObstacle(runner.pos)) state = states.dead;
+    }
+  );
 }
 
 
