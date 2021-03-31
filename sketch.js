@@ -1,4 +1,6 @@
-let qwerty;
+function preload() {
+  for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("images/explosion" + (i + 1) + ".png"));
+}
 
 function setup() {
   frameRate(30);
