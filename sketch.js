@@ -14,9 +14,12 @@ function setup() {
   ]
   
   zippers = [
+    new Zipper( -75,  900,  -75,  200, 100, 100, 1),
+
     new Zipper( 140,  -50, 1050,  725, 100, 100, 1),
     new Zipper(1340,  850, 2250,   75, 100, 100, 1),
     new Zipper(2540,  -50, 3450,  725, 100, 100, 1),
+
     new Zipper(3725,  750, 3725,  300, 100, 100, 1),
     new Zipper(3725,  300, 3500,    0, 100, 100, 4),
     new Zipper(3500, -100, 3200, -300, 100, 100, 4),
@@ -39,12 +42,38 @@ function setup() {
       new p5.Vector(3350, -50),
       new p5.Vector(2975, -300),
       new p5.Vector(1000, -300),
-    ])
+    ], false),
+    new Obstacle([
+      new p5.Vector( -300,     0),
+      new p5.Vector( -175,  -175),
+      new p5.Vector(  -50,  -250),
+      new p5.Vector( 1000,  -550),
+      new p5.Vector( 3200,  -550),
+      new p5.Vector( 3600,  -200),
+      new p5.Vector( 3900,   200),
+      new p5.Vector( 3900,   800),
+      new p5.Vector( 3800,   975),
+      new p5.Vector( 3600,  1050),
+      new p5.Vector( 3400,   975),
+      new p5.Vector( 3300,   800),
+      new p5.Vector( 2400,     0),
+      new p5.Vector( 2350,   150),
+      new p5.Vector( 1300,  1025),
+      new p5.Vector( 1100,  1025),
+      new p5.Vector( 1000,   925),
+      new p5.Vector(  950,   800),
+      new p5.Vector(  200,   150),
+      new p5.Vector(   50,   200),
+      new p5.Vector(   50,   900),
+      new p5.Vector(  -75,  1000),
+      new p5.Vector( -200,   900),
+      new p5.Vector( -200,   250),
+    ], true)
   ]
 
   initStars(width * height / 320);
   
-  runner = new Runner(-200, 50, 24, -18);
+  runner = new Runner(-50, 901, 0, -50, 30);
 
   state = newState(states.start);
 }
