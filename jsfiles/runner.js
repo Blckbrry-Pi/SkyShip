@@ -4,6 +4,7 @@ class Runner {
   constructor(xPos, yPos, xVel = 0, yVel = 0) {
     this.pos = createVector(xPos, yPos);
     this.vel = createVector(xVel, yVel);
+    this.targetVelMag = createVector(xVel, yVel).mag();
     this.connectedAttractor = {
       index: -1,
       springLen: -1,
@@ -34,11 +35,20 @@ class Runner {
       this.doSpringPhysics(attractors, timeMult);
     }
     let zipperVector = this.getZipperVector(zippers, timeMult);
-    zipperVector.setMag(this.vel.mag());
+    zipperVector.mult(7000);
+    console.log(zipperVector);
+
+    let oldMag = this.vel.mag();
 
     this.vel = p5.Vector.lerp(this.vel, zipperVector, zipperStrength);
 
-    this.vel.setMag(zipperVector.mag());
+    this.vel = this.vel.setMag(
+      lerp(
+        oldMag,
+        this.targetVelMag,
+        0.1 * timeMult
+      )
+    )
 
     this.pos.x += this.vel.x * timeMult;
     this.pos.y += this.vel.y * timeMult;
@@ -54,11 +64,9 @@ class Runner {
 
         let currZipperVec = currZipperDirLine.getVector();
         currZipperVec.setMag(1 / currZipperVec.mag());
+        currZipperVec.mult(zippers[0].strength)
         totalZipperVec.add(currZipperVec);
       }
-    }
-    if (totalZipperVec.x === 0 && totalZipperVec.y === 0) {
-      return this.vel;
     }
     return totalZipperVec;
   }
