@@ -5,10 +5,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   
   attractors = [
-    new Attractor(   0,   0, 150, 30, true),
-    new Attractor(1200, 800, 150, 30, false),
-    new Attractor(2400,   0, 150, 30, false),
-    new Attractor(3600, 800, 150, 30, true),
+    new Attractor(   0,   0, 150, 50, true),
+    new Attractor(1200, 800, 150, 50, false),
+    new Attractor(2400,   0, 150, 50, false),
+    new Attractor(3600, 800, 150, 50, true),
   ]
   
   zippers = [
