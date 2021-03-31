@@ -2,9 +2,9 @@ let attractorTimer = 0;
 const attractorTimerTarget = 100;
 
 const slowdownRadius = 150;
-const slowdownConst_r = 1 / 6;
+const slowdownConst_r = 1 / 3;
 
-const slowdownConst_c = 1 / 3;
+const slowdownConst_c = 2 / 3;
 
 
 function getTimeMult(x, y, attractors) {
