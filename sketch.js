@@ -89,6 +89,26 @@ function updateCamera() {
   globalMouse.translation = viewTranslation;
 }
 
+function drawAttractors() {
+  drawingContext.save();
+  drawingContext.beginPath();
+  for (let i = 0; i < attractors.length; i++) {
+    attractors[i].drawBounds();
+  }
+  for (let i = attractors.length - 2; i > 0; i--) {
+    attractors[i].drawBounds();
+  }
+  drawingContext.clip();
+  starryBackground();
+  drawingContext.restore();
+
+  attractors.forEach(
+    element => {
+      element.draw();
+    }
+  );
+}
+
 function drawScene() {
   starryBackground();
   zippers.forEach(
@@ -96,10 +116,8 @@ function drawScene() {
       element.draw();
     }
   );
-  attractors.forEach(
-    element => {
-      element.draw();
-    }
-  );
+  
+  drawAttractors();
+
   runner.draw();
 }
