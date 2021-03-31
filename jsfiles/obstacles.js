@@ -26,7 +26,7 @@ class Obstacle {
   draw() {
     strokeWeight(2);
     stroke(80, 12, 24);
-    fill(80, 12, 24, 50);
+    fill(80, 12, 24, 75);
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       let onScreenPoint = vectorToScreenVector(this.points[i]);
