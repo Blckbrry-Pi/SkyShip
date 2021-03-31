@@ -121,3 +121,10 @@ function drawScene() {
 
   runner.draw();
 }
+
+
+function keyPressed() {
+  if (keyCode === 32 || keyCode == 80) {
+    isLooping() ? noLoop() : loop();
+  }
+}
