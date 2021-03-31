@@ -49,22 +49,8 @@ function setup() {
 
 
 function draw() {
-  doStateLoop();
-  timeStep();
-  starStep();
-  attractorStep();
-  switch (state) {
-    case states.flying:
-      runnerStep();
-  }
-  updateCamera();
-  drawScene();
-  
+  doStateLoop(state);
 }
-
-
-
-
 
 function keyPressed() {
   if (keyCode === 32 || keyCode == 80) {
