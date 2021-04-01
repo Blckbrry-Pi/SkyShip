@@ -66,6 +66,8 @@ var levels = [
       ], true)
     ],
   
+    finishLine: new FinishLine(0, 0, Math.PI * 1/2, 400, 50),
+
     runner: new Runner(-75, 901, 0, -1, 30)
   }
 ]
@@ -77,6 +79,7 @@ function loadLevel(levelIndex) {
   obstacles  = _.cloneDeep(levels[levelIndex].obstacles );
   zippers    = _.cloneDeep(levels[levelIndex].zippers   );
   attractors = _.cloneDeep(levels[levelIndex].attractors);
+  finishLine = _.cloneDeep(levels[levelIndex].finishLine);
 
   state = newState(states.start);
 }

@@ -1,7 +1,4 @@
-const defaultButtonSize = 50;
-let buttonHoverIndex;
-
-let restartButtons = {
+let continueButtons = {
   menu: {
     draw: function(size) {
       ellipse(0, 0, size * 2, size * 2);
@@ -45,17 +42,34 @@ let restartButtons = {
       loadLevel(currentLevel);
     }
   },
+  continue: {
+    draw: function(size) {
+      ellipse(0, 0, size * 2, size * 2);
+
+      let detailDist = size * 1/3.5;
+
+      fill(255);
+
+      triangle(-detailDist * 2, detailDist, -detailDist * 2, -detailDist, 0, 0);
+      triangle(0, detailDist, 0, -detailDist, detailDist * 2, 0);
+    },
+    press: function() {
+      let lvlInd = levelsDisplayed.indexOf(currentLevel);
+      if(++lvlInd == levelsDisplayed.length) return;
+      loadLevel(levelsDisplayed[lvlInd]);
+    }
+  },
 }
 
-function stateRestart(stateTimer) {
-  let totalButtonCount = attributesInObject(restartButtons);
+function stateContinue(stateTimer) {
+  let totalButtonCount = attributesInObject(continueButtons);
 
   buttonHoverIndex = getButtonHoverIndex(totalButtonCount);
 
   let buttonIndex = 0;
-  for(let button in restartButtons) {
-    drawButton(restartButtons, button, buttonIndex, totalButtonCount, constrain(stateTimer * 50, 0, 255));
-    if (buttonIndex == buttonHoverIndex && mouseIsPressed) restartButtons[button].press();
+  for(let button in continueButtons) {
+    drawButton(continueButtons, button, buttonIndex, totalButtonCount, constrain(stateTimer * 50, 0, 255));
+    if (buttonIndex == buttonHoverIndex && mouseIsPressed) continueButtons[button].press();
     buttonIndex++;
   }
 }

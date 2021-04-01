@@ -1,11 +1,14 @@
 var states = {
-  menu:    "Menu",
+  menu:     "Menu",
 
-  start:   "Start",
-  flying:  "Flying",
-  dead:    "Dead",
+  start:    "Start",
+  flying:   "Flying",
+
+  dead:     "Dead",
+  restart:  "Restart",
   
-  restart: "Restart",
+  win:      "Win",
+  continue: "Continue",
 };
 
 function newState(stateEnum) {
@@ -30,13 +33,22 @@ function doStateLoop(stateToDo) {
       stateFlying(stateToDo.stateTimer);
       break;
     
+      
     case states.dead:
       stateDead(stateToDo.stateTimer);
       break;
   
-    
     case states.restart:
       stateRestart(stateToDo.stateTimer);
+      break;
+
+
+    case states.win:
+      stateWin(stateToDo.stateTimer);
+      break;
+
+    case states.continue:
+      stateContinue(stateToDo.stateTimer);
       break;
 
     default:

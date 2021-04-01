@@ -96,8 +96,59 @@ function drawScene() {
   );
   
   drawAttractors();
+
+  finishLine.draw();
 }
 
 function drawRunner() {
   runner.draw();
+}
+
+
+
+
+function attributesInObject(object) {
+  var length = 0;
+  for(var _ in object) length++;
+  return length;
+}
+
+function getButtonHoverIndex(buttonCount) {
+  for (let i = 0; i < buttonCount; i++) {
+    buttonCenter = new p5.Vector(width/2, height/2);
+    buttonCenter.add(-(buttonCount - 1) * defaultButtonSize * 2, 0);
+    buttonCenter.add(i * defaultButtonSize * 4, 0);
+    if (dist(buttonCenter.x, buttonCenter.y, mouseX, mouseY) < defaultButtonSize) return i;
+  }
+  return -1;
+}
+
+function drawButton(buttons, button, ind, buttonCount, opacity) {
+  fill(100, opacity);
+  stroke(255, opacity);
+  strokeWeight(3);
+
+  push();
+    translate(width / 2, height / 2);
+    translate(-(buttonCount - 1) * defaultButtonSize * 2, 0);
+    translate(ind * defaultButtonSize * 4, 0);
+    buttons[button].draw(defaultButtonSize);
+  pop();
+}
+
+
+function setClipCircle(stateTimer) {
+  noStroke();
+  ellipse(width / 2, height / 2, 9000 - stateTimer * 100, 9000 - stateTimer * 100);
+}
+
+function drawClippedScene(stateTimer) {
+  drawingContext.save();
+  drawingContext.clip();
+  drawScene();
+  drawExplosion(
+    Math.floor(stateTimer / 3),
+    runner.pos.x, runner.pos.y
+  )
+  drawingContext.restore();
 }
