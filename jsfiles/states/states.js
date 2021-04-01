@@ -1,4 +1,6 @@
 var states = {
+  menu:    "Menu",
+
   start:   "Start",
   flying:  "Flying",
   dead:    "Dead",
@@ -15,6 +17,11 @@ function newState(stateEnum) {
 
 function doStateLoop(stateToDo) {
   switch (stateToDo.state) {
+    case states.menu:
+      stateMenu(stateToDo.stateTimer);
+      break;
+
+
     case states.start:
       stateStart(stateToDo.stateTimer);
       break;
@@ -27,6 +34,7 @@ function doStateLoop(stateToDo) {
       stateDead(stateToDo.stateTimer);
       break;
   
+    
     case states.restart:
       stateRestart(stateToDo.stateTimer);
       break;
