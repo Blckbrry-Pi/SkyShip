@@ -8,8 +8,7 @@ function setup() {
 
   initStars(width * height / 320);
 
-  currentLevel = 0
-  loadLevel(currentLevel);
+  state = newState(states.menu);
 }
 
 
