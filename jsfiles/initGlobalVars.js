@@ -11,7 +11,7 @@ var assets = {
     explosion: [],
 }
 
-let levelsDisplayed = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+let levelsDisplayed = [0];
 let menuPage = 0;
 let unlocked = [0];
 
@@ -23,3 +23,4 @@ var attractors;
 var zippers;
 var obstacles;
 var runner;
+var finishLine;
