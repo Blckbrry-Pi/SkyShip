@@ -2,9 +2,9 @@ let attractorTimer = 0;
 const attractorTimerTarget = 100;
 
 const slowdownRadius = 150;
-const slowdownConst_r = 1 / 3;
+const slowdownConst_r = 2 / 2;
 
-const slowdownConst_c = 2 / 3;
+const slowdownConst_c = 1 / 2;
 
 
 function getTimeMult(x, y, attractors) {
@@ -37,6 +37,8 @@ function onConnect(timeMult) {
     attractorTimer = attractorTimerTarget;
 }
 
-function onDisconnect() {
-  attractorTimer = 0;
+function onDisconnect(timeMult) {
+  attractorTimer -= 20;
+  if (attractorTimer < 0)
+    attractorTimer = 0;
 }

@@ -2,9 +2,10 @@ function timeStep() {
   timeMult = getTimeMult(runner.pos.x, runner.pos.y, attractors);
   
   
-  if (runner.connectedAttractor.index !== -1) {
-    //onConnect(timeMult);
-  }
+  if (runner.connectedAttractor.index !== -1)
+    onConnect(timeMult);
+  else
+    onDisconnect(timeMult);
 }
 
 function testForDeath() {
@@ -40,7 +41,6 @@ function runnerStep() {
   } else {
     if(mouseWasPressed) {
       runner.onMouseRelease();
-      onDisconnect();
     }
   }
   mouseWasPressed = mouseIsPressed;
