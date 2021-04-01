@@ -13,6 +13,7 @@ var assets = {
 
 
 var state;
+var currentLevel;
 
 
 var attractors;
