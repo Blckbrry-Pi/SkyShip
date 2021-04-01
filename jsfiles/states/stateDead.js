@@ -13,19 +13,23 @@ function stateDead(stateTimer) {
 
 function drawDead(stateTimer) {
   background(0);
+  setClipCircle(stateTimer);
+  drawClippedScene(stateTimer);
+}
 
-  drawingContext.save();
-  stroke(100);
-  strokeWeight(2);
+function setClipCircle(stateTimer) {
+  noStroke();
   ellipse(width / 2, height / 2, 9000 - stateTimer * 100, 9000 - stateTimer * 100);
+}
 
+function drawClippedScene(stateTimer) {
+  drawingContext.save();
   drawingContext.clip();
   drawScene();
   drawExplosion(
     Math.floor(stateTimer / 3),
     runner.pos.x, runner.pos.y
   )
-
   drawingContext.restore();
 }
 
