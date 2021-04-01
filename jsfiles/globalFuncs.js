@@ -8,19 +8,6 @@ function timeStep() {
     onDisconnect(timeMult);
 }
 
-function testForDeath() {
-  attractors.forEach(
-    element => {
-      if (element.collided(runner.pos.x, runner.pos.y)) state = newState(states.dead);
-    }
-  );
-  obstacles.forEach(
-    element => {
-      if (element.pointInObstacle(runner.pos)) state = newState(states.dead);
-    }
-  );
-}
-
 function starStep() {
   rotateStars(timeMult);
 }
