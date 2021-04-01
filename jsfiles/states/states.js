@@ -1,7 +1,9 @@
 var states = {
-  start:  "Start",
-  flying: "Flying",
-  dead:   "Dead",
+  start:   "Start",
+  flying:  "Flying",
+  dead:    "Dead",
+  
+  restart: "Restart",
 };
 
 function newState(stateEnum) {
@@ -23,6 +25,10 @@ function doStateLoop(stateToDo) {
     
     case states.dead:
       stateDead(stateToDo.stateTimer);
+      break;
+  
+    case states.restart:
+      stateRestart(stateToDo.stateTimer);
       break;
 
     default:
