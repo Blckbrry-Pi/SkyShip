@@ -1,5 +1,6 @@
 var levels = [
   {
+    name: "The First Level",
     attractors: [
       new Attractor(   0,   0, 150, 50, true),
       new Attractor(1200, 800, 150, 50, false),
@@ -70,6 +71,8 @@ var levels = [
 ]
 
 function loadLevel(levelIndex) {
+  currentLevel = levelIndex;
+
   runner     = _.cloneDeep(levels[levelIndex].runner    );
   obstacles  = _.cloneDeep(levels[levelIndex].obstacles );
   zippers    = _.cloneDeep(levels[levelIndex].zippers   );
