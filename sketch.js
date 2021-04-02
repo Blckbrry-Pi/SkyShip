@@ -1,5 +1,6 @@
 function preload() {
   for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("images/explosion" + (i + 1) + ".png"));
+  frameRate(30);
 }
 
 function setup() {
