@@ -38,6 +38,72 @@ var levels = [
     runner: new Runner(-900, -75.0001, 10, 0, 20),
   },
   {
+    name: "Back To Where We Started",
+    attractors: [
+      new Attractor(    0,    0, 150, 50, true),
+      new Attractor(    0, 1000, 150, 50, true),
+      new Attractor(-1000, 1000, 150, 50, true),
+    ],
+
+    zippers: [
+      new Zipper( -800,   -75,  -200,   -75, 100, 100, 1),
+      new Zipper(   75,   200,    75,   800, 100, 100, 1),
+      new Zipper( -200,  1075,  -800,  1075, 100, 100, 1),
+      new Zipper(-1075,   800, -1075,   200, 100, 100, 1),
+    ],
+    
+    obstacles: [
+      new Obstacle([
+        new p5.Vector( -975,    25),
+        new p5.Vector( -200,    25),
+
+        new p5.Vector(    0,     0),
+
+        new p5.Vector(  -25,   200),
+        new p5.Vector(  -25,   800),
+
+        new p5.Vector(    0,  1000),
+
+        new p5.Vector( -200,   975),
+        new p5.Vector( -800,   975),
+
+        new p5.Vector(-1000,  1000),
+
+        new p5.Vector( -975,   800),
+      ], false),
+      new Obstacle([
+        new p5.Vector( -975,  -175),
+        new p5.Vector( -200,  -175),
+
+        new p5.Vector(    0,  -275),
+        new p5.Vector(  175,  -175),
+        new p5.Vector(  275,     0),
+
+        new p5.Vector(  175,   200),
+        new p5.Vector(  175,   800),
+
+        new p5.Vector(  275,  1000),
+        new p5.Vector(  175,  1175),
+        new p5.Vector(    0,  1275),
+
+        new p5.Vector( -200,  1175),
+        new p5.Vector( -800,  1175),
+
+        new p5.Vector(-1000,  1275),
+        new p5.Vector(-1175,  1175),
+        new p5.Vector(-1275,  1000),
+
+        new p5.Vector(-1175,   800),
+        new p5.Vector(-1175,    25),
+
+      ], true)
+    ],
+
+    finishLine: new FinishLine(-1175, 100, 0, 300, 100),
+
+    runner: new Runner(-700, -75.0001, 10, 0, 20),
+  },
+  {
     name: "Up and Down and Up Again",
     attractors: [
       new Attractor(   0,   0, 150, 50, true),
