@@ -55,7 +55,7 @@ let continueButtons = {
     },
     press: function() {
       let lvlInd = levelsDisplayed.indexOf(currentLevel);
-      if(++lvlInd == levelsDisplayed.length) return;
+      if (++lvlInd == levelsDisplayed.length) return;
       loadLevel(levelsDisplayed[lvlInd]);
     }
   },
@@ -72,4 +72,6 @@ function stateContinue(stateTimer) {
     if (buttonIndex == buttonHoverIndex && mouseIsPressed) continueButtons[button].press();
     buttonIndex++;
   }
+  let lvlInd = levelsDisplayed.indexOf(currentLevel);
+  if (++lvlInd !== levelsDisplayed.length && !unlocked.includes(levelsDisplayed[lvlInd])) unlocked.push(levelsDisplayed[lvlInd]);
 }
