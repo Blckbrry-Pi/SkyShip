@@ -11,7 +11,7 @@ var assets = {
     explosion: [],
 }
 
-let levelsDisplayed = [0];
+let levelsDisplayed = [0, 1];
 let menuPage = 0;
 let unlocked = [0];
 
