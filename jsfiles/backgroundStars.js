@@ -9,7 +9,7 @@ function initStars(starCount) {
         dist: sqrt(random() * 2),
         rot: random(TAU),
         strokeWeight: random() * 2.5,
-        intensity: random() * random(0, 0.9)
+        color: color(255, 255 * random() * random(0, 0.9))
       }
     )
   }
@@ -33,7 +33,7 @@ function starryBackground(inAttractors) {
     if(inAttractors) if (!inAttractor(new p5.Vector(xOffs, yOffs))) continue;
 
     strokeWeight(stars[i].strokeWeight);
-    stroke(255, stars[i].intensity * 255);
+    stroke(stars[i].color);
 
     point(xOffs, yOffs);
   }
