@@ -49,8 +49,8 @@ function updateCamera() {
   globalMouse.translation = viewTranslation;
 }
 
-function drawBase() {
-  starryBackground();
+function drawBase(inAttractors) {
+  starryBackground(inAttractors);
   obstacles.forEach(
     element => {
       element.draw();
@@ -74,7 +74,7 @@ function drawAttractors() {
     attractors[i].drawBounds();
   }
   drawingContext.clip();
-  drawBase();
+  drawBase(true);
   drawingContext.restore();
 
   attractors.forEach(
@@ -87,7 +87,7 @@ function drawAttractors() {
 
 
 function drawScene() {
-  drawBase();
+  drawBase(false);
 
   zippers.forEach(
     element => {
