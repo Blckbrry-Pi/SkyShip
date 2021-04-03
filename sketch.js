@@ -1,6 +1,15 @@
 function preload() {
   for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("images/explosion" + (i + 1) + ".png"));
-  frameRate(30);
+  
+  fetch('levels.levelData').then(
+    res => res.text()
+  ).then(
+    (levels) => {
+      addJSONs(levels);
+    }
+  ).catch(
+    err => console.error(err)
+  );
 }
 
 function setup() {
