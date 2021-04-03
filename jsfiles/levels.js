@@ -1,8 +1,6 @@
 var levels = [];
 
 function addJSONs(levelsString) {
-  console.log(levelsString);
-
   splitString = levelsString.split("\n");
 
   splitString.forEach(
