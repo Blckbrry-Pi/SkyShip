@@ -19,7 +19,7 @@ export function addJSONs(levelsString) {
   );
 }
 
-function JSON2Level(levelString) {
+export function JSON2Level(levelString) {
   let level = JSON.parse(levelString);
 
   for (let i = 0; i < level.attractors.length; i++) {

@@ -51,8 +51,11 @@ function loadUnlocked() {
     for (let i = 0; i < unlockedInStorage.length; i++)
       if (levelsDisplayed.includes(unlockedInStorage[i]))
         unlocked.push(unlockedInStorage[i]);
-      
-    
+
+    let customUnlockStorage = localStorage.getItem('unlockedCustom');
+    if (customUnlockStorage == null) return;
+
+    if (customUnlockStorage === 'true') customUnlocked = true;
   }
   catch (e) {}
 }
@@ -79,4 +82,6 @@ function saveUnlocked() {
   unlockedToStorage.sort((a, b) => a - b);
 
   localStorage.setItem('unlockedLevels', JSON.stringify(unlockedToStorage));
+
+  if (customUnlocked) localStorage.setItem('unlockedCustom', 'true');
 }

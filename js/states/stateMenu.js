@@ -1,18 +1,30 @@
 import {starStep} from "../extraFunctions/globalFuncs.js";
 import {levels, loadLevel} from "../extraFunctions/levels.js";
 import {starryBackground} from "../extraFunctions/backgroundStars.js";
+import {states, newState} from "./states.js";
 
 
 export function stateMenu(stateTimer) {
+    if (isCustomLevel) {
+        levels.pop();
+        isCustomLevel = false;
+    }
+
     starStep();
     starryBackground();
 
     let hoveredLevel = levelsDisplayed[getLevelHovered(menuPage)];
     drawLevelIcons(levelsDisplayed, unlocked, menuPage);
+    if (customUnlocked) drawCustomButton();
 
     if (unlocked.includes(hoveredLevel)) {
         writeLevelName(levels[hoveredLevel].name);
         if (mouseIsPressed) loadLevel(hoveredLevel);
+    }
+    if (customButtonHovered()) {
+        if (customUnlocked && mouseIsPressed) {
+            state = newState(states.custom);
+        }
     }
 }
 
@@ -63,7 +75,7 @@ function drawLevelIcon(number, position, unlocked) {
         textAlign(CENTER, CENTER);
         textSize(distanceBetween / 3);
         textFont("Futura");
-        fill(unlocked ? 0 : 30)
+        fill(unlocked ? 0 : 30);
         text(number + 1, 0, 0);
     pop();
 }
@@ -82,4 +94,37 @@ function writeLevelName(name) {
         strokeWeight(3);
         text(name, 0, 0);
     pop();
+}
+
+
+function drawCustomButton() {
+    let distanceBetween = Math.min(width / 6, height / 3.5);
+    push();
+        translate(width * 7/8, height/2 - distanceBetween*1.4);
+
+        fill(100);
+        stroke(255);
+        strokeWeight(2);
+        rect(0, -distanceBetween / 6, distanceBetween * 2/3, distanceBetween / 3,  distanceBetween / 20);
+
+        textAlign(CENTER, CENTER);
+        textSize(distanceBetween / 6);
+        textFont("Futura");
+        fill(0);
+        strokeWeight(2);
+        text("Custom", distanceBetween / 3, 0)
+    pop();
+}
+
+function customButtonHovered() {
+    let distanceBetween = Math.min(width / 6, height / 3.5);
+
+    let mousePos = new p5.Vector(mouseX, mouseY);
+    
+    mousePos.sub(new p5.Vector(width * 7/8, height/2 - distanceBetween * (1.4 + 1/6)));
+    
+    let xInBounds = 0 < mousePos.x && mousePos.x < distanceBetween * 2/3;
+    let yInBounds = 0 < mousePos.y && mousePos.y < distanceBetween * 1/3;
+
+    return xInBounds && yInBounds;
 }

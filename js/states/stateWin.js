@@ -19,7 +19,7 @@ export function stateWin(stateTimer) {
 
   drawWin(stateTimer);
 
-  if (stateTimer >= 30) state = newState(states.continue);
+  if (stateTimer >= 30) state = newState(isCustomLevel ? states.restart : states.continue);
 }
 
 function drawWin(stateTimer) {

@@ -1,4 +1,5 @@
 import {stateMenu    } from "./stateMenu.js"    ;
+import {stateCustom  } from "./stateCustom.js"  ;
 
 import {stateStart   } from "./stateStart.js"   ;
 import {stateFlying  } from "./stateFlying.js"  ;
@@ -12,6 +13,7 @@ import {stateContinue} from "./stateContinue.js";
 
 export let states = {
   menu:     "Menu",
+  custom:   "Custom",
 
   start:    "Start",
   flying:   "Flying",
@@ -34,6 +36,10 @@ export function doStateLoop(stateToDo) {
   switch (stateToDo.state) {
     case states.menu:
       stateMenu(stateToDo.stateTimer);
+      break;
+
+    case states.custom:
+      stateCustom(stateToDo.stateTimer);
       break;
 
 

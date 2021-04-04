@@ -59,8 +59,8 @@ let continueButtons = {
     },
     press: function() {
       let lvlInd = levelsDisplayed.indexOf(currentLevel);
-      if (++lvlInd == levelsDisplayed.length) return;
-      loadLevel(levelsDisplayed[lvlInd]);
+      if (++lvlInd == levelsDisplayed.length) newState(state.custom);
+      else loadLevel(levelsDisplayed[lvlInd]);
     }
   },
 }
@@ -77,5 +77,6 @@ export function stateContinue(stateTimer) {
     buttonIndex++;
   }
   let lvlInd = levelsDisplayed.indexOf(currentLevel);
-  if (++lvlInd !== levelsDisplayed.length && !unlocked.includes(levelsDisplayed[lvlInd])) unlocked.push(levelsDisplayed[lvlInd]);
+  if (++lvlInd === levelsDisplayed.length) customUnlocked = true;
+  else if (!unlocked.includes(levelsDisplayed[lvlInd])) unlocked.push(levelsDisplayed[lvlInd]);
 }
