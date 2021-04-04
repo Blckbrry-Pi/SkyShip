@@ -2,7 +2,7 @@ let stars = [];
 let starCount;
 let starOffs = 0;
 
-function initStars(starCount) {
+export function initStars(starCount) {
   for (let i = 0; i < starCount; i++) {
     stars.push(
       {
@@ -16,7 +16,7 @@ function initStars(starCount) {
 }
 
 
-function starryBackground(inAttractors) {
+export function starryBackground(inAttractors) {
 
   let starOffsR = radians(starOffs);
 
@@ -53,6 +53,6 @@ function inAttractor(pointToCheck) {
   return false;
 }
 
-function rotateStars(timeMult = 1) {
+export function rotateStars(timeMult = 1) {
   starOffs += 0.02 * timeMult;
 }

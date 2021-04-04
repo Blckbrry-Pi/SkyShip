@@ -1,4 +1,12 @@
-function stateStart(stateTimer) {
+import {
+  timeStep,
+  updateCamera,
+  drawScene,
+  drawRunner
+} from "../globalFuncs.js";
+import {newState, states} from "./states.js";
+
+export function stateStart(stateTimer) {
   timeStep();
 
   updateCamera();

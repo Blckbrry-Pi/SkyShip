@@ -1,4 +1,7 @@
-const defaultButtonSize = 50;
+import {attributesInObject, getButtonHoverIndex, drawButton} from "../globalFuncs.js";
+import {loadLevel} from "../levels.js";
+import {states, newState} from "./states.js";
+
 let buttonHoverIndex;
 
 let restartButtons = {
@@ -47,7 +50,7 @@ let restartButtons = {
   },
 }
 
-function stateRestart(stateTimer) {
+export function stateRestart(stateTimer) {
   let totalButtonCount = attributesInObject(restartButtons);
 
   buttonHoverIndex = getButtonHoverIndex(totalButtonCount);

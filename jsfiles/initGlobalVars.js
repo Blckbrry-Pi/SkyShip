@@ -1,13 +1,20 @@
-var timeMult = 1;
-var mouseWasPressed = false;
 
-var globalMouse = new Mouse();
+let Mouse;
+import("./mouse.js").then(module => {
+  Mouse = module.Mouse;
+  globalMouse = new Mouse();
+})
 
-var viewTranslation = new p5.Vector(100, 0);
-var viewScale = 1;
+let timeMult = 1;
+let mouseWasPressed = false;
+
+let globalMouse;
+
+let viewTranslation = new p5.Vector(100, 0);
+let viewScale = 1;
 
 
-var assets = {
+let assets = {
     explosion: [],
 }
 
@@ -15,12 +22,12 @@ let levelsDisplayed = [0, 1, 2];
 let menuPage = 0;
 let unlocked = [0];
 
-var state;
-var currentLevel;
+let state;
+let currentLevel;
 
 
-var attractors;
-var zippers;
-var obstacles;
-var runner;
-var finishLine;
+let attractors;
+let zippers;
+let obstacles;
+let runner;
+let finishLine;

@@ -7,7 +7,7 @@ const slowdownConst_r = 2 / 2;
 const slowdownConst_c = 1 / 2;
 
 
-function getTimeMult(x, y, attractors) {
+export function getTimeMult(x, y, attractors) {
   return lerp(
     nearAttractorMult(x, y, attractors),
     slowdownConst_c / (1 + slowdownConst_c),
@@ -16,7 +16,7 @@ function getTimeMult(x, y, attractors) {
 }
 
 function nearAttractorMult(x, y, attractors) {
-  minTimeMult = 1;
+  let minTimeMult = 1;
   for (let i = 0; i < attractors.length; i++) {
     let n = map(
       dist(attractors[i].x, attractors[i].y, x, y),
@@ -31,13 +31,13 @@ function nearAttractorMult(x, y, attractors) {
   return minTimeMult;
 }
 
-function onConnect(timeMult) {
+export function onConnect(timeMult) {
   attractorTimer += timeMult * 10;
   if (attractorTimer > attractorTimerTarget)
     attractorTimer = attractorTimerTarget;
 }
 
-function onDisconnect(timeMult) {
+export function onDisconnect(timeMult) {
   attractorTimer -= 20;
   if (attractorTimer < 0)
     attractorTimer = 0;

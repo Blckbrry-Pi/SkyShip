@@ -1,4 +1,16 @@
-var states = {
+import {stateMenu    } from "./stateMenu.js"    ;
+
+import {stateStart   } from "./stateStart.js"   ;
+import {stateFlying  } from "./stateFlying.js"  ;
+
+import {stateDead    } from "./stateDead.js"    ;
+import {stateRestart } from "./stateRestart.js" ;
+
+import {stateWin     } from "./stateWin.js"     ;
+import {stateContinue} from "./stateContinue.js";
+
+
+export let states = {
   menu:     "Menu",
 
   start:    "Start",
@@ -11,14 +23,14 @@ var states = {
   continue: "Continue",
 };
 
-function newState(stateEnum) {
+export function newState(stateEnum) {
   return {
     state: stateEnum,
     stateTimer: 0,
   }
 }
 
-function doStateLoop(stateToDo) {
+export function doStateLoop(stateToDo) {
   switch (stateToDo.state) {
     case states.menu:
       stateMenu(stateToDo.stateTimer);

@@ -1,4 +1,4 @@
-class Mouse {
+export class Mouse {
   constructor(translation = new p5.Vector(0, 0), scale = 1) {
     this.translation = translation;
     this.scale = scale;

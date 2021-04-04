@@ -1,4 +1,15 @@
-function stateFlying(stateTimer) {
+import {
+  timeStep,
+  starStep,
+  attractorStep,
+  runnerStep,
+  updateCamera,
+  drawScene,
+  drawRunner
+} from "../globalFuncs.js";
+import {newState, states} from "./states.js";
+
+export function stateFlying(stateTimer) {
   timeStep();
   testForDeath();
   testForWin();

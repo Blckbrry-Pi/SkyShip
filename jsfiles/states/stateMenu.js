@@ -1,8 +1,13 @@
-function stateMenu(stateTimer) {
+import {starStep} from "../globalFuncs.js";
+import {levels, loadLevel} from "../levels.js";
+import {starryBackground} from "../backgroundStars.js";
+
+
+export function stateMenu(stateTimer) {
     starStep();
     starryBackground();
 
-    hoveredLevel = levelsDisplayed[getLevelHovered(menuPage)];
+    let hoveredLevel = levelsDisplayed[getLevelHovered(menuPage)];
     drawLevelIcons(levelsDisplayed, unlocked, menuPage);
 
     if (unlocked.includes(hoveredLevel)) {

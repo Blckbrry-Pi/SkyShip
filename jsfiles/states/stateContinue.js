@@ -1,3 +1,7 @@
+import {attributesInObject, getButtonHoverIndex, drawButton} from "../globalFuncs.js";
+import {loadLevel} from "../levels.js";
+import {states, newState} from "./states.js";
+
 let continueButtons = {
   menu: {
     draw: function(size) {
@@ -61,10 +65,10 @@ let continueButtons = {
   },
 }
 
-function stateContinue(stateTimer) {
+export function stateContinue(stateTimer) {
   let totalButtonCount = attributesInObject(continueButtons);
 
-  buttonHoverIndex = getButtonHoverIndex(totalButtonCount);
+  let buttonHoverIndex = getButtonHoverIndex(totalButtonCount);
 
   let buttonIndex = 0;
   for(let button in continueButtons) {

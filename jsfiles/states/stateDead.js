@@ -1,4 +1,14 @@
-function stateDead(stateTimer) {
+import {
+  timeStep,
+  starStep,
+  attractorStep,
+  updateCamera,
+  setClipCircle,
+  drawClippedScene
+} from "../globalFuncs.js";
+import {newState, states} from "./states.js";
+
+export function stateDead(stateTimer) {
   timeStep();
 
   starStep();
@@ -17,10 +27,10 @@ function drawDead(stateTimer) {
   drawClippedScene(stateTimer);
 }
 
-function drawExplosion(frame, x, y) {
+export function drawExplosion(frame, x, y) {
   if (frame >= assets.explosion.length) return;
 
-  pixelSize = 100 * viewScale;
+  let pixelSize = 100 * viewScale;
 
   let screenPos = new p5.Vector(
     (x - viewTranslation.x) * viewScale,

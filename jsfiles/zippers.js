@@ -1,4 +1,4 @@
-class DirectionalLine {
+export class DirectionalLine {
   constructor(xS, yS, xE, yE) {
     this.startPoint = new p5.Vector(xS, yS);
     this.endPoint   = new p5.Vector(xE, yE);
@@ -127,7 +127,7 @@ class DirectionalLine {
   }
 }
 
-class Zipper {
+export class Zipper {
   constructor(xS, yS, xE, yE, widthOfEffect, attractDistAhead, zipperStrength) {
     this.line = new DirectionalLine(xS, yS, xE, yE);
     this.width = widthOfEffect;

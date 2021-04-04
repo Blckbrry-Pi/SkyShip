@@ -1,4 +1,14 @@
-function timeStep() {
+import {rotateStars, starryBackground} from "./backgroundStars.js";
+import {getTimeMult, onConnect, onDisconnect} from "./time.js";
+import {drawExplosion} from "./states/stateDead.js";
+
+const defaultButtonSize = 50;
+
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export function timeStep() {
   timeMult = getTimeMult(runner.pos.x, runner.pos.y, attractors);
   
   
@@ -8,11 +18,11 @@ function timeStep() {
     onDisconnect(timeMult);
 }
 
-function starStep() {
+export function starStep() {
   rotateStars(timeMult);
 }
 
-function attractorStep() {
+export function attractorStep() {
   attractors.forEach(
     element => {
       element.rotStep(timeMult);
@@ -20,7 +30,7 @@ function attractorStep() {
   );
 }
 
-function runnerStep() {
+export function runnerStep() {
   if (mouseIsPressed) {
     if (!mouseWasPressed) {
       runner.onMouseDown(attractors);
@@ -41,7 +51,7 @@ function runnerStep() {
 
 
 
-function updateCamera() {
+export function updateCamera() {
   viewScale = 1.5;
   viewTranslation = new p5.Vector(runner.pos.x - width / 2 / viewScale, runner.pos.y - height / 2 / viewScale);
   
@@ -49,7 +59,7 @@ function updateCamera() {
   globalMouse.translation = viewTranslation;
 }
 
-function drawBase(inAttractors) {
+export function drawBase(inAttractors) {
   starryBackground(inAttractors);
   obstacles.forEach(
     element => {
@@ -64,7 +74,7 @@ function drawBase(inAttractors) {
 
 
 
-function drawAttractors() {
+export function drawAttractors() {
   drawingContext.save();
   drawingContext.beginPath();
   for (let i = 0; i < attractors.length; i++) {
@@ -86,7 +96,7 @@ function drawAttractors() {
 
 
 
-function drawScene() {
+export function drawScene() {
   drawBase(false);
 
   zippers.forEach(
@@ -100,22 +110,22 @@ function drawScene() {
   finishLine.draw();
 }
 
-function drawRunner() {
+export function drawRunner() {
   runner.draw();
 }
 
 
 
 
-function attributesInObject(object) {
+export function attributesInObject(object) {
   var length = 0;
   for(var _ in object) length++;
   return length;
 }
 
-function getButtonHoverIndex(buttonCount) {
+export function getButtonHoverIndex(buttonCount) {
   for (let i = 0; i < buttonCount; i++) {
-    buttonCenter = new p5.Vector(width/2, height/2);
+    let buttonCenter = new p5.Vector(width/2, height/2);
     buttonCenter.add(-(buttonCount - 1) * defaultButtonSize * 2, 0);
     buttonCenter.add(i * defaultButtonSize * 4, 0);
     if (dist(buttonCenter.x, buttonCenter.y, mouseX, mouseY) < defaultButtonSize) return i;
@@ -123,7 +133,7 @@ function getButtonHoverIndex(buttonCount) {
   return -1;
 }
 
-function drawButton(buttons, button, ind, buttonCount, opacity) {
+export function drawButton(buttons, button, ind, buttonCount, opacity) {
   fill(100, opacity);
   stroke(255, opacity);
   strokeWeight(3);
@@ -137,12 +147,12 @@ function drawButton(buttons, button, ind, buttonCount, opacity) {
 }
 
 
-function setClipCircle(stateTimer) {
+export function setClipCircle(stateTimer) {
   noStroke();
   ellipse(width / 2, height / 2, 9000 - stateTimer * 100, 9000 - stateTimer * 100);
 }
 
-function drawClippedScene(stateTimer) {
+export function drawClippedScene(stateTimer) {
   drawingContext.save();
   drawingContext.clip();
   drawScene();

@@ -1,6 +1,6 @@
 const zipperStrength = 0.05;
 
-class Runner {
+export class Runner {
   constructor(xPos, yPos, xVel = 0, yVel = 0, targetVel) {
     this.pos = new p5.Vector(xPos, yPos);
     this.vel = new p5.Vector(xVel, yVel);

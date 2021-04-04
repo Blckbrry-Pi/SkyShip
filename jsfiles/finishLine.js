@@ -1,4 +1,4 @@
-class FinishLine {
+export class FinishLine {
     constructor(x, y, rot, w, h) {
         this.pos = new p5.Vector(x, y);
         this.angle = rot;

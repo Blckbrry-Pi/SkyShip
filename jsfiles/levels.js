@@ -1,7 +1,16 @@
-var levels = [];
+import {Attractor } from "./attractor.js" ;
+import {Zipper    } from "./zippers.js"   ;
+import {Obstacle  } from "./obstacles.js" ;
+import {Runner    } from "./runner.js"    ;
+import {FinishLine} from "./finishLine.js";
 
-function addJSONs(levelsString) {
-  splitString = levelsString.split("\n");
+import {states, newState} from "./states/states.js";
+
+
+export var levels = [];
+
+export function addJSONs(levelsString) {
+  let splitString = levelsString.split("\n");
 
   splitString.forEach(
     levelJSON => {
@@ -11,7 +20,7 @@ function addJSONs(levelsString) {
 }
 
 function JSON2Level(levelString) {
-  level = JSON.parse(levelString);
+  let level = JSON.parse(levelString);
 
   for (let i = 0; i < level.attractors.length; i++) {
     let currA = level.attractors[i];
@@ -63,7 +72,7 @@ function JSON2Level(levelString) {
 
 
 
-function loadLevel(levelIndex) {
+export function loadLevel(levelIndex) {
   currentLevel = levelIndex;
 
   runner     = _.cloneDeep(levels[levelIndex].runner    );

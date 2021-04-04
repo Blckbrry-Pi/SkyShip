@@ -1,4 +1,15 @@
-function stateWin(stateTimer) {
+import {
+  timeStep,
+  starStep,
+  attractorStep,
+  updateCamera,
+  drawRunner,
+  setClipCircle,
+  drawClippedScene
+} from "../globalFuncs.js";
+import {newState, states} from "./states.js";
+
+export function stateWin(stateTimer) {
   timeStep();
 
   starStep();

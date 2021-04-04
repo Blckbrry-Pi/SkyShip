@@ -1,4 +1,4 @@
-class Attractor {
+export class Attractor {
   constructor(xPos, yPos, fieldRadius, physicalRadius, spinClockwise) {
     this.x = xPos;
     this.y = yPos;

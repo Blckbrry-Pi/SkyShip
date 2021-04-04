@@ -1,4 +1,6 @@
-class Obstacle {
+import {DirectionalLine} from "./zippers.js"
+
+export class Obstacle {
   constructor(points, obstType = false) {
     this.points = points;
     this.isOuter = obstType;
