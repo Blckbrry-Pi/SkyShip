@@ -1,6 +1,6 @@
 import {rotateStars, starryBackground} from "./backgroundStars.js";
 import {getTimeMult, onConnect, onDisconnect} from "./time.js";
-import {drawExplosion} from "./states/stateDead.js";
+import {drawExplosion} from "../states/stateDead.js";
 
 const defaultButtonSize = 50;
 

@@ -3,7 +3,7 @@ import {
   updateCamera,
   drawScene,
   drawRunner
-} from "../globalFuncs.js";
+} from "../extraFunctions/globalFuncs.js";
 import {newState, states} from "./states.js";
 
 export function stateStart(stateTimer) {

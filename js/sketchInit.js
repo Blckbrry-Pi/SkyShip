@@ -1,24 +1,38 @@
-import {states, newState, doStateLoop} from "./js/states/states.js";
-import {addJSONs} from "./js/levels.js";
-import {initStars} from "./js/backgroundStars.js";
+import {states, newState, doStateLoop} from "./states/states.js";
+import {addJSONs} from "./extraFunctions/levels.js";
+import {initStars} from "./extraFunctions/backgroundStars.js";
+import {Mouse} from "./classes/mouse.js";
 
 export function preload() {
-  for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("images/explosion" + (i + 1) + ".png"))
+  for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("../data/images/explosion" + (i + 1) + ".png"));
 
-  fetch('levels.levelData').then(
+  fetch('../data/levels.levelData').then(
     res => res.text()
   ).then(
     (levels) => {
       addJSONs(levels);
+      preloadDone[0] = true;
     }
-  ).catch(
-    err => console.error(err)
-  );
+  ).catch();
+
+  fetch('../data/levelmetadata.json').then(
+    res => res.json()
+  ).then(
+    (json) => {
+      let metadata = JSON.parse(json);
+
+      levelsDisplayed = metadata.levelsDisplayed;
+      unlocked        = metadata.unlocked;
+      preloadDone[1] = true;
+    }
+  ).catch();
 }
 
 export function setup() {
   frameRate(30);
   createCanvas(windowWidth, windowHeight);
+
+  globalMouse = new Mouse();
 
   initStars(width * height / 320);
 

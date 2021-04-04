@@ -1,5 +1,5 @@
-import {attributesInObject, getButtonHoverIndex, drawButton} from "../globalFuncs.js";
-import {loadLevel} from "../levels.js";
+import {attributesInObject, getButtonHoverIndex, drawButton} from "../extraFunctions/globalFuncs.js";
+import {loadLevel} from "../extraFunctions/levels.js";
 import {states, newState} from "./states.js";
 
 let continueButtons = {

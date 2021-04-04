@@ -1,6 +1,6 @@
-import {starStep} from "../globalFuncs.js";
-import {levels, loadLevel} from "../levels.js";
-import {starryBackground} from "../backgroundStars.js";
+import {starStep} from "../extraFunctions/globalFuncs.js";
+import {levels, loadLevel} from "../extraFunctions/levels.js";
+import {starryBackground} from "../extraFunctions/backgroundStars.js";
 
 
 export function stateMenu(stateTimer) {

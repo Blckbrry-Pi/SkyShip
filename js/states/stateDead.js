@@ -5,7 +5,7 @@ import {
   updateCamera,
   setClipCircle,
   drawClippedScene
-} from "../globalFuncs.js";
+} from "../extraFunctions/globalFuncs.js";
 import {newState, states} from "./states.js";
 
 export function stateDead(stateTimer) {
