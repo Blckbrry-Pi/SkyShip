@@ -32,7 +32,7 @@ let setupDone = false;
 let drawFunc = undefined;
 
 function preload() {
-  import("./js/sketchInit.js").then(module => module.preload());
+  import("./sketchInit.js").then(module => module.preload());
 }
 
 function setup() {}
@@ -40,11 +40,11 @@ function setup() {}
 function draw() {
   if (!preloadDone.includes(false)) {
     if (!setupDone) {
-      import("./js/sketchInit.js").then(module => module.setup());
+      import("./sketchInit.js").then(module => module.setup());
       setupDone = true;
     } else {
       if (typeof drawFunc != "function") {
-        import("./js/sketchInit.js").then(module => {
+        import("./sketchInit.js").then(module => {
           drawFunc = module.draw;
           module.draw();
         });
