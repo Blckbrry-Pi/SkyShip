@@ -13,9 +13,11 @@ let assets = {
 let levelsDisplayed;
 let menuPage = 0;
 let unlocked;
+let customUnlocked = false;
 
 let state;
 let currentLevel;
+let isCustomLevel = false;
 
 
 let attractors;
@@ -53,4 +55,8 @@ function draw() {
       }
     }
   }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
