@@ -111,7 +111,7 @@ export function drawScene() {
 }
 
 export function drawRunner() {
-  runner.draw();
+  runner.draw(true);
 }
 
 

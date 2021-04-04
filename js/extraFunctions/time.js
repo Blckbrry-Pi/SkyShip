@@ -1,4 +1,4 @@
-let attractorTimer = 0;
+export let attractorTimer = 0;
 const attractorTimerTarget = 100;
 
 const slowdownRadius = 150;

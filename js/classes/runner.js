@@ -1,3 +1,6 @@
+import {DirectionalLine} from "./zippers.js";
+import {attractorTimer} from "../extraFunctions/time.js";
+
 const zipperStrength = 0.05;
 
 export class Runner {
@@ -12,7 +15,31 @@ export class Runner {
     };
   }
   
-  draw(transparency) {
+  draw(inGame) {
+    if (inGame) {
+      for (let i = 0; i < attractors.length; i++) {
+        if (attractors[i].inRange(this.pos.x, this.pos.y)) {
+          let springLine = new DirectionalLine(this.pos.x, this.pos.y, attractors[i].x, attractors[i].y);
+
+          let strokeTransp = (attractors[i].fieldSize - dist(this.pos.x, this.pos.y, attractors[i].x, attractors[i].y)) * 10
+
+          stroke(50, strokeTransp);
+          strokeWeight(3);
+          drawingContext.setLineDash([5, 15]);
+          springLine.draw(1);
+
+          drawingContext.setLineDash([]);
+        }
+      }
+
+      if (this.connectedAttractor.index !== -1) {
+        let springLine = new DirectionalLine(this.pos.x, this.pos.y, this.connectedAttractor.pos.x, this.connectedAttractor.pos.y);
+        stroke(0, 255, 0, attractorTimer * 3);
+        strokeWeight(4);
+        springLine.draw(1)
+      }
+    }
+    
     push();
       translate((this.pos.x - viewTranslation.x) * viewScale, (this.pos.y - viewTranslation.y) * viewScale);
       push();
