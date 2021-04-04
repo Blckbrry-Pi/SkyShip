@@ -4,9 +4,9 @@ import {initStars} from "./extraFunctions/backgroundStars.js";
 import {Mouse} from "./classes/mouse.js";
 
 export function preload() {
-  for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("../data/images/explosion" + (i + 1) + ".png"));
+  for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("data/images/explosion" + (i + 1) + ".png"));
 
-  fetch('../data/levels.levelData').then(
+  fetch('data/levels.levelData').then(
     res => res.text()
   ).then(
     (levels) => {
@@ -15,7 +15,7 @@ export function preload() {
     }
   ).catch();
 
-  fetch('../data/levelmetadata.json').then(
+  fetch('data/levelmetadata.json').then(
     res => res.json()
   ).then(
     (json) => {
