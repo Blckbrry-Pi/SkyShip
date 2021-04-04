@@ -1,8 +1,8 @@
-import {Attractor } from "./attractor.js" ;
-import {Zipper    } from "./zippers.js"   ;
-import {Obstacle  } from "./obstacles.js" ;
-import {Runner    } from "./runner.js"    ;
-import {FinishLine} from "./finishLine.js";
+import {Attractor } from "./classes/attractor.js" ;
+import {Zipper    } from "./classes/zippers.js"   ;
+import {Obstacle  } from "./classes/obstacles.js" ;
+import {Runner    } from "./classes/runner.js"    ;
+import {FinishLine} from "./classes/finishLine.js";
 
 import {states, newState} from "./states/states.js";
 
