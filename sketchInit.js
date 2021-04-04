@@ -1,6 +1,6 @@
-import {states, newState, doStateLoop} from "./jsfiles/states/states.js";
-import {addJSONs} from "./jsfiles/levels.js";
-import {initStars} from "./jsfiles/backgroundStars.js";
+import {states, newState, doStateLoop} from "./js/states/states.js";
+import {addJSONs} from "./js/levels.js";
+import {initStars} from "./js/backgroundStars.js";
 
 export function preload() {
   for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("images/explosion" + (i + 1) + ".png"))

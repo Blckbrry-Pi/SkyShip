@@ -1,6 +1,6 @@
 
 let Mouse;
-import("./classes/mouse.js").then(module => {
+import("./js/classes/mouse.js").then(module => {
   Mouse = module.Mouse;
   globalMouse = new Mouse();
 })
