@@ -4,6 +4,8 @@ import {initStars} from "./extraFunctions/backgroundStars.js";
 import {Mouse} from "./classes/mouse.js";
 
 export function preload() {
+  p5.disableFriendlyErrors = true;
+
   for (let i = 0; i < 12; i++) assets.explosion.push(loadImage("data/images/explosion" + (i + 1) + ".png"));
 
   fetch('data/levels.levelData').then(
