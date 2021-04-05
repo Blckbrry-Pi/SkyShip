@@ -59,7 +59,7 @@ let continueButtons = {
     },
     press: function() {
       let lvlInd = levelsDisplayed.indexOf(currentLevel);
-      if (++lvlInd == levelsDisplayed.length) newState(state.custom);
+      if (++lvlInd === levelsDisplayed.length) state = newState(states.custom);
       else loadLevel(levelsDisplayed[lvlInd]);
     }
   },

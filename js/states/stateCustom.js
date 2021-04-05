@@ -2,12 +2,14 @@
 import {starStep} from "../extraFunctions/globalFuncs.js";
 import {starryBackground} from "../extraFunctions/backgroundStars.js";
 import {JSON2Level, levels, loadLevel} from "../extraFunctions/levels.js";
+import {states, newState} from "./states.js";
 
 let inputBox;
 
 let distanceBetween;
 let editorButtonParams;
 let playButtonParams;
+let backButtonParams;
 
 export function stateCustom(stateTimer) {
     if (stateTimer === 1) {
@@ -41,6 +43,19 @@ export function stateCustom(stateTimer) {
         messColor:  color(0),
         messStroke: color(255),
     }
+    backButtonParams = {
+        x:          distanceBetween/3,
+        y:          distanceBetween/3,
+        width:      distanceBetween*2/3,
+        height:     distanceBetween/3,
+        rounding:   distanceBetween/20,
+        color:      color(100),
+        stroke:     color(255),
+        message:    "Back",
+        messSize:   distanceBetween/6,
+        messColor:  color(0),
+        messStroke: color(255),
+    }
 
 
     customDraw();
@@ -53,6 +68,14 @@ export function stateCustom(stateTimer) {
         editorButtonParams.x,     editorButtonParams.y,
         editorButtonParams.width, editorButtonParams.height,
     );
+    let backIsPressed = customButtonHovered(
+        backButtonParams.x,     backButtonParams.y,
+        backButtonParams.width, backButtonParams.height,
+    );
+    if (backIsPressed && mouseIsPressed) {
+        state = newState(states.menu);
+        inputBox.remove();
+    }
     if (playIsPressed && mouseWasPressed && !mouseIsPressed) {
         try {
             levels.push(JSON2Level(inputBox.value()));
@@ -92,6 +115,14 @@ function customDraw() {
         playButtonParams.color,     playButtonParams.stroke,
         playButtonParams.message,   playButtonParams.messSize,
         playButtonParams.messColor, playButtonParams.messStroke,
+    );
+    drawCustomButton(
+        backButtonParams.x,         backButtonParams.y,
+        backButtonParams.width,     backButtonParams.height,
+        backButtonParams.rounding,
+        backButtonParams.color,     backButtonParams.stroke,
+        backButtonParams.message,   backButtonParams.messSize,
+        backButtonParams.messColor, backButtonParams.messStroke,
     );
 }
 
