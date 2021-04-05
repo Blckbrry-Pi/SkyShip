@@ -40,7 +40,8 @@ export function runnerStep() {
       runner.onMouseRelease();
     }
   }
-  mouseWasPressed = mouseIsPressed;
+  if (mouseIsPressed && !mouseWasPressed && runner.connectedAttractor.index === -1) mouseWasPressed = !runnerLookahead(5);
+  else mouseWasPressed = mouseIsPressed;
   
   runner.updateSpringLength(timeMult);
   
@@ -48,7 +49,16 @@ export function runnerStep() {
 }
 
 
+function runnerLookahead(steps) {
+  let lookaheadRunner = _.cloneDeep(runner);
 
+  for (let i = 0; i < steps; i++) {
+    lookaheadRunner.updateSpringLength(timeMult);
+    lookaheadRunner.doPhysicsStep(attractors, zippers, timeMult);
+    lookaheadRunner.onMouseDown(attractors);
+    if (lookaheadRunner.connectedAttractor.index !== -1) return true;
+  }
+}
 
 
 export function updateCamera() {
