@@ -56,6 +56,7 @@ export function stateRestart(stateTimer) {
   buttonHoverIndex = getButtonHoverIndex(totalButtonCount);
 
   let buttonIndex = 0;
+  background(0);
   for(let button in restartButtons) {
     drawButton(restartButtons, button, buttonIndex, totalButtonCount, constrain(stateTimer * 50, 0, 255));
     if (buttonIndex == buttonHoverIndex && mouseIsPressed) restartButtons[button].press();

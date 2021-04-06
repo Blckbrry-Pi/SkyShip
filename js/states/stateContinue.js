@@ -69,14 +69,16 @@ export function stateContinue(stateTimer) {
   let totalButtonCount = attributesInObject(continueButtons);
 
   let buttonHoverIndex = getButtonHoverIndex(totalButtonCount);
+  
+  let lvlInd = levelsDisplayed.indexOf(currentLevel);
+  if (++lvlInd === levelsDisplayed.length) customUnlocked = true;
+  else if (!unlocked.includes(levelsDisplayed[lvlInd])) unlocked.push(levelsDisplayed[lvlInd]);
 
   let buttonIndex = 0;
+  background(0);
   for(let button in continueButtons) {
     drawButton(continueButtons, button, buttonIndex, totalButtonCount, constrain(stateTimer * 50, 0, 255));
     if (buttonIndex == buttonHoverIndex && mouseIsPressed) continueButtons[button].press();
     buttonIndex++;
   }
-  let lvlInd = levelsDisplayed.indexOf(currentLevel);
-  if (++lvlInd === levelsDisplayed.length) customUnlocked = true;
-  else if (!unlocked.includes(levelsDisplayed[lvlInd])) unlocked.push(levelsDisplayed[lvlInd]);
 }

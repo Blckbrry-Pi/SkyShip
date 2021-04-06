@@ -1,5 +1,4 @@
 let stars = [];
-let starCount;
 let starOffs = 0;
 
 export function initStars(starCount) {
@@ -30,7 +29,7 @@ export function starryBackground(inAttractors) {
 
     if (!xInRange || !yInRange) continue;
 
-    if(inAttractors) if (!inAttractor(new p5.Vector(xOffs, yOffs))) continue;
+    if (inAttractors) if (!inAttractor(new p5.Vector(xOffs, yOffs))) continue;
 
     strokeWeight(stars[i].strokeWeight);
     stroke(stars[i].color);
