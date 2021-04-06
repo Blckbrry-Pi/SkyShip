@@ -16,8 +16,8 @@ export class Runner {
   }
   
   draw(inGame, viewScaleOpt = undefined, viewTranslationOpt = undefined) {
-    let viewScale       = viewScaleOpt       === undefined ? viewScaleOpt       : viewScale;
-    let viewTranslation = viewTranslationOpt === undefined ? viewTranslationOpt : viewTranslation;
+    let viewScale       = viewScaleOpt       !== undefined ? viewScaleOpt       : viewScale;
+    let viewTranslation = viewTranslationOpt !== undefined ? viewTranslationOpt : viewTranslation;
     if (inGame) {
       for (let i = 0; i < attractors.length; i++) {
         if (attractors[i].inRange(this.pos.x, this.pos.y)) {
