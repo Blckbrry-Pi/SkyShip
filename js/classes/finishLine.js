@@ -11,6 +11,7 @@ export class FinishLine {
             translate((this.pos.x - viewTranslation.x) * viewScale, (this.pos.y - viewTranslation.y) * viewScale);
             push();
                 rotate(this.angle);
+                scale(viewScale);
                 fill(255);
                 stroke(0);
                 rect(0, 0, this.size.x, this.size.y);
