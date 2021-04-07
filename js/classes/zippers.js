@@ -160,8 +160,6 @@ export class Zipper {
 
       let perpLineDirLine = new DirectionalLine(0, perpLineSIF.yInt, 100, 100 * perpLineSIF.slope + perpLineSIF.yInt);
 
-      perpLineDirLine.draw();
-
       let perpLineInterPoint = this.line.calculateLineIntersect(perpLineDirLine);
 
       return new DirectionalLine(pointIn.x, pointIn.y, perpLineInterPoint.x, perpLineInterPoint.y);
