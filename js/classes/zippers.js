@@ -114,7 +114,7 @@ export class DirectionalLine {
     );
   }
 
-  draw() {
+  draw(viewScale, viewTranslation) {
     let startPointScreenPos = new p5.Vector(
       (this.startPoint.x - viewTranslation.x) * viewScale,
       (this.startPoint.y - viewTranslation.y) * viewScale,
@@ -123,6 +123,7 @@ export class DirectionalLine {
       (this.endPoint.x - viewTranslation.x) * viewScale,
       (this.endPoint.y - viewTranslation.y) * viewScale,
     );
+
     line(startPointScreenPos.x, startPointScreenPos.y, endPointScreenPos.x, endPointScreenPos.y);
   }
 }
@@ -178,7 +179,8 @@ export class Zipper {
     lineToAdvance.endPoint.y += lineVector.y;
   }
 
-  draw() {
+  draw(viewScale, viewTranslation) {
+
     let zipperLength = this.length();
 
     let startPointScreenPos = new p5.Vector(

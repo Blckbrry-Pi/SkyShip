@@ -15,9 +15,8 @@ export class Runner {
     };
   }
   
-  draw(inGame, viewScaleOpt = undefined, viewTranslationOpt = undefined) {
-    let viewScale       = viewScaleOpt       !== undefined ? viewScaleOpt       : viewScale;
-    let viewTranslation = viewTranslationOpt !== undefined ? viewTranslationOpt : viewTranslation;
+  draw(inGame, viewScale, viewTranslation) {
+
     if (inGame) {
       for (let i = 0; i < attractors.length; i++) {
         if (attractors[i].inRange(this.pos.x, this.pos.y)) {
@@ -28,7 +27,7 @@ export class Runner {
           stroke(50, strokeTransp);
           strokeWeight(3);
           drawingContext.setLineDash([5, 15]);
-          springLine.draw(1);
+          springLine.draw(viewScale, viewTranslation);
 
           drawingContext.setLineDash([]);
         }
@@ -38,7 +37,7 @@ export class Runner {
         let springLine = new DirectionalLine(this.pos.x, this.pos.y, this.connectedAttractor.pos.x, this.connectedAttractor.pos.y);
         stroke(0, 255, 0, attractorTimer * 3);
         strokeWeight(4);
-        springLine.draw(1)
+        springLine.draw(viewScale, viewTranslation)
       }
     }
     

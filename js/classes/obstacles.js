@@ -29,7 +29,7 @@ export class Obstacle {
       return intersections % 2 ? true : false
   }
     
-  draw() {
+  draw(viewScale, viewTranslation) {
 
     strokeWeight(2);
     stroke(80, 12, 24);

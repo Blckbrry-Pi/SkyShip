@@ -73,7 +73,7 @@ export function drawBase(inAttractors) {
   starryBackground(inAttractors);
   obstacles.forEach(
     element => {
-      element.draw();
+      element.draw(viewScale, viewTranslation);
     }
   );
 }
@@ -99,7 +99,7 @@ export function drawAttractors() {
 
   attractors.forEach(
     element => {
-      element.draw();
+      element.draw(viewScale, viewTranslation);
     }
   );
 }
@@ -111,17 +111,17 @@ export function drawScene() {
 
   zippers.forEach(
     element => {
-      element.draw();
+      element.draw(viewScale, viewTranslation);
     }
   );
   
   drawAttractors();
 
-  finishLine.draw();
+  finishLine.draw(viewScale, viewTranslation);
 }
 
 export function drawRunner() {
-  runner.draw(true);
+  runner.draw(true, viewScale, viewTranslation);
 }
 
 

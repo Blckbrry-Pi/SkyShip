@@ -5,7 +5,8 @@ export class FinishLine {
         this.size = new p5.Vector(w, h);
     }
 
-    draw() {
+    draw(viewScale, viewTranslation) {
+
         push();
             translate((this.pos.x - viewTranslation.x) * viewScale, (this.pos.y - viewTranslation.y) * viewScale);
             push();
