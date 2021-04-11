@@ -88,7 +88,12 @@ export function stateCustom(stateTimer) {
         }
     }
     if (editorIsPressed && mouseWasPressed && !mouseIsPressed) {
-        window.open("../SkyShip-level-editor")
+        document.getElementById("defaultCanvas0").addEventListener(
+            "mouseup", 
+            function() {
+                window.open("../SkyShip-level-editor");
+            },
+        );
     }
     mouseWasPressed = mouseIsPressed;
 }
