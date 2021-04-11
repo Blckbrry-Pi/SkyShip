@@ -72,11 +72,11 @@ export function stateCustom(stateTimer) {
         backButtonParams.x,     backButtonParams.y,
         backButtonParams.width, backButtonParams.height,
     );
-    if (backIsPressed && mouseIsPressed) {
+    if (backIsPressed && mouseIsPressed && !mouseWasPressed) {
         state = newState(states.menu);
         inputBox.remove();
     }
-    if (playIsPressed && mouseWasPressed && !mouseIsPressed) {
+    if (playIsPressed && mouseIsPressed && !mouseWasPressed) {
         try {
             levels.push(JSON2Level(inputBox.value()));
             loadLevel(levels.length - 1);
@@ -87,13 +87,19 @@ export function stateCustom(stateTimer) {
             console.error(e);
         }
     }
-    if (editorIsPressed && mouseWasPressed && !mouseIsPressed) {
+    if (editorIsPressed && mouseIsPressed && !mouseWasPressed) {
+        let openWindowFunction = function() {
+            window.open("../SkyShip-level-editor");
+            document.getElementById("defaultCanvas0").removeEventListener(
+                "click", 
+                openWindowFunction,
+            );
+        }
         document.getElementById("defaultCanvas0").addEventListener(
-            "mouseup", 
-            function() {
-                window.open("../SkyShip-level-editor");
-            },
+            "click", 
+            openWindowFunction,
         );
+        console.log()
     }
     mouseWasPressed = mouseIsPressed;
 }
