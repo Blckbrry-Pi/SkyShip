@@ -34,14 +34,14 @@ export class Obstacle {
     strokeWeight(2);
     stroke(80, 12, 24);
     fill(0, 0);
-    this.drawOutline();
+    this.drawOutline(viewScale, viewTranslation);
 
     noStroke();
-    this.setClipShape();
+    this.setClipShape(viewScale, viewTranslation);
 
     this.drawClipRect();
   }
-  drawOutline() {
+  drawOutline(viewScale, viewTranslation) {
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       let onScreenPoint = vectorToScreenVector(this.points[i], viewTranslation, viewScale);
@@ -49,7 +49,7 @@ export class Obstacle {
     }
     endShape(CLOSE);
   }
-  setClipShape() {
+  setClipShape(viewScale, viewTranslation) {
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
       addPoint(this.points[i], viewTranslation, viewScale);
