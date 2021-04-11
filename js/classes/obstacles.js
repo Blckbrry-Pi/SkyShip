@@ -44,7 +44,7 @@ export class Obstacle {
   drawOutline() {
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
-      let onScreenPoint = vectorToScreenVector(this.points[i]);
+      let onScreenPoint = vectorToScreenVector(this.points[i], viewTranslation, viewScale);
       vertex(onScreenPoint.x, onScreenPoint.y);
     }
     endShape(CLOSE);
@@ -52,21 +52,20 @@ export class Obstacle {
   setClipShape() {
     beginShape();
     for (let i = 0; i < this.points.length; i++) {
-      addPoint(this.points[i]);
+      addPoint(this.points[i], viewTranslation, viewScale);
     }
 
     if (this.isOuter) {
-      let onScreenPoint;
-      addPoint(this.points[0]);
+      addPoint(this.points[0], viewTranslation, viewScale);
 
-      addPoint(new p5.Vector(-10000, this.points[0].y));
+      addPoint(new p5.Vector(-10000, this.points[0].y), viewTranslation, viewScale);
 
-      addPoint(new p5.Vector(-10000,  10000));
-      addPoint(new p5.Vector( 10000,  10000));
-      addPoint(new p5.Vector( 10000, -10000));
-      addPoint(new p5.Vector(-10000, -10000));
+      addPoint(new p5.Vector(-10000,  10000), viewTranslation, viewScale);
+      addPoint(new p5.Vector( 10000,  10000), viewTranslation, viewScale);
+      addPoint(new p5.Vector( 10000, -10000), viewTranslation, viewScale);
+      addPoint(new p5.Vector(-10000, -10000), viewTranslation, viewScale);
 
-      addPoint(new p5.Vector(-10000, this.points[0].y));
+      addPoint(new p5.Vector(-10000, this.points[0].y), viewTranslation, viewScale);
     }
 
     endShape(CLOSE);
@@ -80,12 +79,12 @@ export class Obstacle {
   }
 }
 
-function addPoint(pointVector) {
-  let onScreenPoint = vectorToScreenVector(pointVector);
+function addPoint(pointVector, viewTranslation, viewScale) {
+  let onScreenPoint = vectorToScreenVector(pointVector, viewTranslation, viewScale);
   vertex(onScreenPoint.x, onScreenPoint.y);
 }
 
-function vectorToScreenVector(pointToMapToScreen) {
+function vectorToScreenVector(pointToMapToScreen, viewTranslation, viewScale) {
   return new p5.Vector(
     (pointToMapToScreen.x - viewTranslation.x) * viewScale,
     (pointToMapToScreen.y - viewTranslation.y) * viewScale,
