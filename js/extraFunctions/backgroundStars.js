@@ -2,6 +2,7 @@ let stars = [];
 let starOffs = 0;
 
 export function initStars(starCount) {
+  stars = [];
   for (let i = 0; i < starCount; i++) {
     stars.push(
       {
