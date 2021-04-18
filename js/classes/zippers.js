@@ -223,4 +223,9 @@ export class Zipper {
       pop();
     pop();
   }
+
+  pointInRange(pointIn) {
+    let currZipperDirLine = this.getPerpThroughPoint(pointIn);
+    return this.line.pointIsOnLine(currZipperDirLine.endPoint) && currZipperDirLine.length() < this.width;
+  }
 }

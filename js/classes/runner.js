@@ -85,8 +85,9 @@ export class Runner {
     let totalZipperVec = new p5.Vector();
 
     for (let i = 0; i < zippers.length; i++) {
-      let currZipperDirLine = zippers[i].getPerpThroughPoint(this.pos);
-      if (zippers[i].line.pointIsOnLine(currZipperDirLine.endPoint) && currZipperDirLine.length() < zippers[i].width) {
+
+      if (zippers[i].pointInRange(this.pos)) {
+        let currZipperDirLine = zippers[i].getPerpThroughPoint(this.pos);
         zippers[i].advanceLine(currZipperDirLine);
 
         let currZipperVec = currZipperDirLine.getVector();
